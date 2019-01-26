@@ -1,0 +1,29 @@
+export const vi = {
+        sidebar: {
+            search: "Tìm kiếm",
+            watch: "Xem",
+            user: "Người dùng"
+        },
+        search: {
+            search: "Tìm kiếm",
+            next: "Trang sau",
+            prev: "Trang trước",
+            playing: "Đang xem"
+        },
+        watch: {
+            no_video_playing: "Không có video"
+        },
+        user: {
+            setting: {
+                setting: "Cài đặt",
+                pause_when_change_tab: "Dừng video khi chuyển tab",
+                pause_when_hide_app: "Dừng video khi ẩn ứng dụng",
+                max_result: "Kết quả tối đa",
+                save: "Lưu",
+                synchronous_setting: "Đồng bộ cài đặt"
+            },
+            saved: {
+                saved: "Đã lưu"
+            }
+        }
+    }

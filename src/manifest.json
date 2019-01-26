@@ -1,0 +1,26 @@
+{
+    "manifest_version": 2,
+    "name": "Tasy Youtube",
+    "version": "1.0.0",
+    "description": "Extension Vue Youtube",
+    "content_scripts": [
+      {
+        "matches": [
+          "*://*/*"
+        ],
+        "js": [
+          "js/main.js"
+        ],
+        "css": [
+            "css/app.css"
+          ],
+        "run_at": "document_end"
+      }
+    ],
+    "permissions": [
+      "storage"
+    ],
+    "browser_action": {
+      "default_popup": "popup.html"
+    }
+  }
