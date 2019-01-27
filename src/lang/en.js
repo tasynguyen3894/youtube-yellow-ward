@@ -11,7 +11,10 @@ export const en = {
             playing: "PLAYING"
         },
         watch: {
-            no_video_playing: "No video playing"
+            no_video_playing: "No video playing",
+            saved: "Saved",
+            copied: "Copied",
+            had_exists: "Video has already been saved in save list"
         },
         user: {
             setting: {

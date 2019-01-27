@@ -7,13 +7,22 @@
             <h3>{{ video.title }}</h3>
             <h4>{{ video.channelTitle }}</h4>
         </div>
+        
         <div class="ts-ext-detail-btn">
             <span @click="save()">
                  <font-awesome-icon icon="save" />
             </span>
-            <!-- <span @click="save()">
+            <span @click="getUrl()">
                  <font-awesome-icon icon="link" />
-            </span> -->
+            </span>
+            <template v-if="message != ''">
+                <span class="ts-ext-notice" v-if="message == 'copied'">{{ $t('watch.copied') }}</span>
+                <span class="ts-ext-notice" v-if="message == 'saved'">{{ $t('watch.saved') }}</span>
+                <span class="ts-ext-notice" v-if="message == 'had_exists'">{{ $t('watch.had_exists') }}</span>
+            </template>
+        </div>
+        <div class="ts-ext-input-url">
+            <input v-bind:value="'https://www.youtube.com/watch?v='+video.id" ref="videoUrl" type="text">
         </div>
     </div>
     <div class="ext-detail ts-ext-content-empty" v-else>
@@ -29,6 +38,11 @@ export default {
         video: {
             default: null,
             type: Object
+        }
+    },
+    data: () => {
+        return {
+            message: ''
         }
     },
     created() {
@@ -47,10 +61,21 @@ export default {
             let _this = this
             pushSaveVideo(this.video).then(function (result) {
                 _this.$store.commit('setSaveVideo', { saveVideo: result })
+                _this.message = 'saved'
+            }).catch(function (error) {
+                if(error.error == 'is_exists') {
+                    _this.message = 'had_exists'
+                }
             })
         },
         watchVideo(video) {
+            this.message = ''
             this.video = video
+        },
+        getUrl() {
+            this.message = 'copied'
+            this.$refs.videoUrl.select()
+            document.execCommand('copy')
         }
     },
     watch: {
@@ -96,6 +121,17 @@ export default {
         margin-top: 15px;
     }
 
+    .ext-detail .ts-ext-input-url {
+        height: 1px;
+        overflow: hidden;
+    }
+
+    .ext-detail .ts-ext-input-url input[type="text"] {
+        opacity: 0; 
+        height: 1px; 
+        overflow: hidden
+    }
+
     .ext-detail .ts-ext-detail-btn span {
         padding: 5px 10px;
         display: inline-block;
@@ -105,6 +141,13 @@ export default {
         min-width: 35px;
         text-align: center;
         cursor: pointer;
+    }
+
+    .ext-detail .ts-ext-detail-btn span.ts-ext-notice {
+        background: #FFF;
+        border: none;
+        color: #DD5542;
+        font-style: italic;
     }
 
     .ext-detail .ts-ext-detail-btn span:hover {

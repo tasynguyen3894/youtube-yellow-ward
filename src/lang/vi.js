@@ -11,7 +11,10 @@ export const vi = {
             playing: "Đang xem"
         },
         watch: {
-            no_video_playing: "Không có video"
+            no_video_playing: "Không có video",
+            saved: "Đã lưu",
+            copied: "Đã copy",
+            had_exists: "Video đã có trong danh sách"
         },
         user: {
             setting: {

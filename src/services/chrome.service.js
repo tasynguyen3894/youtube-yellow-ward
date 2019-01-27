@@ -32,7 +32,8 @@ export const pushSaveVideo = function(videoAdd) {
                 chrome.storage.local.set({ts_ext_save_list: dataAdd}, function (res) {
                 });
                 resolve(dataAdd)
-            } 
+            }
+            reject({ error: 'is_exists' })
         });
     });
 }
