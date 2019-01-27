@@ -1,7 +1,7 @@
 <template>
     <div class="ts-ext-search">
         <div class="ts-ext-form">
-            <input type="text" ref="keyword" v-model="keyword">
+            <input type="text" ref="keyword" v-model="keyword" v-on:keyup.enter="search(keyword, null)">
             <button @click="search(keyword, null)">{{ this.$t("search.search") }}</button>
         </div>
         <div class="ts-ext-list ts-ext-content" ref="list_content">
