@@ -4,7 +4,8 @@ const path = require('path')
 
 module.exports = {
     entry: {
-        main: './src/main.js'
+        main: './src/main.js',
+        page: './src/page.js'
     },
     output: {
         path: __dirname + '/dist/js',
@@ -47,6 +48,10 @@ module.exports = {
             },
             {
                 from: path.resolve(__dirname, 'src/popup.html'),
+                to: path.resolve(__dirname, 'dist/')
+            },
+            {
+                from: path.resolve(__dirname, 'src/page.html'),
                 to: path.resolve(__dirname, 'dist/')
             },
             {
