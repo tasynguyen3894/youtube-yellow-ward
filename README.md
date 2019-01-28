@@ -9,12 +9,23 @@ Chrome extension help user watch Youtube inside chrome tab.
 - Setting number results and stop video when change tab or hide windows
 - Support English and Vietnamese
 
-Technologies
+## Technologies
 - Vuejs
 - Rxjs (Drag & Drop function)
 - Chai and Karma (For testing)
 
-Team:
+## Scripts
+
+Watch
+```shell
+yarn run watch
+```
+Run test
+```shell
+yarn run test
+```
+
+Team
 - 
     Nguyen Thai 'Tasy' Sang
     Role: Frontend developer, product director
