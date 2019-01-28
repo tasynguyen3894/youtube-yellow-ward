@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
     state: {
         count: 0,
-        title: 'TASY Youtube Extension',
+        title: 'Youtube Yellow Ward',
         currentVideo: null,
         tab: 'search',
         keyword: null,
