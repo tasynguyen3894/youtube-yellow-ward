@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
-    "name": "Tasy Youtube",
+    "name": "Youtube Yellow Ward",
     "version": "1.0.0",
-    "description": "Extension Vue Youtube",
+    "description": "Extension to watch Youtube's video in Chrome tab",
     "content_scripts": [
       {
         "matches": [
