@@ -87,6 +87,33 @@ export const pushWhiteUrl = function(urlAdd) {
     });
 }
 
+export const editWhiteUrl = function(oldUrl, newUrl) {
+    return new Promise(function (resolve, reject) {
+        chrome.storage.local.get(['ts_ext_white_urls'], function (result) {
+            let dataAdd = []
+            if(typeof result['ts_ext_white_urls'] == 'undefined')
+                dataAdd = []
+            else
+                dataAdd = result['ts_ext_white_urls']
+            let isExists = dataAdd.filter(function (url) {
+                                return url == newUrl
+                            }).length;
+            if(isExists == 0) {
+                dataAdd = dataAdd.map(function (url) {
+                                if(url == oldUrl) {
+                                    return newUrl
+                                }
+                                return url
+                            })
+                chrome.storage.local.set({ts_ext_white_urls: dataAdd}, function (res) {
+                });
+                resolve(dataAdd)
+            }
+            reject({ error: 'is_exists' })
+        });
+    });
+}
+
 export const deleteWhiteUrl = function(urlDelete) {
     return new Promise(function (resolve, reject) {
         chrome.storage.local.get(['ts_ext_white_urls'], function (result) {

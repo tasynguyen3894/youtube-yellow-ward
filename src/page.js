@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { pushWhiteUrl, deleteWhiteUrl, getWhiteUrl } from './services/chrome.service'
+import { pushWhiteUrl, deleteWhiteUrl, getWhiteUrl, editWhiteUrl } from './services/chrome.service'
 
 window.onload = function() {
     new Vue({
@@ -8,7 +8,10 @@ window.onload = function() {
             return {
                 whiteUrl: [],
                 urlAdd: '',
-                isLoadWhiteUrl: true
+                isLoadWhiteUrl: true,
+                oldEditUrl: '',
+                newEditUrl: '',
+                messageAdd: ''
             }
         },
         created() {
@@ -26,6 +29,32 @@ window.onload = function() {
                 pushWhiteUrl(url).then(function (result) {
                     _this.whiteUrl = result
                     _this.urlAdd = ''
+                }).catch(function (error) {
+
+                })
+            },
+            saveEditUrl(oldUrl, newUrl) {
+                let _this = this
+                editWhiteUrl(oldUrl, newUrl).then(function (result) {
+                    _this.whiteUrl = result
+                    _this.urlAdd = ''
+                }).catch(function (error) {
+                    if(error.error == 'is_exists') {
+                        _this.messageAdd = 'had_exists'
+                    }
+                })
+            },
+            editUrl(url) {
+                this.oldEditUrl = url
+                this.newEditUrl = url
+            },
+            deleteUrl(url) {
+                let _this = this
+                deleteWhiteUrl(url).then(function(result) {
+                    if(typeof result != "undefined") {
+                        _this.whiteUrl = result
+                    }
+                    _this.isLoadWhiteUrl = false
                 })
             }
         }

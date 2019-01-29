@@ -13,10 +13,16 @@
         <div>
             <input type="text" v-model="urlAdd">
             <button @click="addUrl(urlAdd)" v-show="urlAdd != ''">Add</button>
+            <span v-text="messageAdd" v-show="messageAdd != ''"></span>
         </div>
         <div>
             <div :key="key" v-for="(url, key) in whiteUrl">
-                <span v-text="url"></span>
+                <span v-show="oldEditUrl != url" v-text="url"></span>
+                <input v-if="oldEditUrl == url" v-model="newEditUrl" type="text">
+                <button @click="deleteUrl(url)">Delete</button>
+                <button v-if="oldEditUrl != url" @click="editUrl(url)">Edit</button>
+                <button v-if="oldEditUrl == url" @click="saveEditUrl(url, newEditUrl)">Save</button>
+                <button v-if="oldEditUrl == url" @click="editUrl('')">Cancel</button>
             </div>
         </div>
     </div>
