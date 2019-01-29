@@ -4,11 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Youtube Yellow Ward</title>
 </head>
 <body>
     <div id="ts-ext-page">
-
+        <h1>Youtube Yellow Ward</h1>
+        <h3>White Urls</h3>
+        <div>
+            <input type="text" v-model="urlAdd">
+            <button @click="addUrl(urlAdd)" v-show="urlAdd != ''">Add</button>
+        </div>
+        <div>
+            <div :key="key" v-for="(url, key) in whiteUrl">
+                <span v-text="url"></span>
+            </div>
+        </div>
     </div>
     <script src="js/page.js"></script>
 </body>

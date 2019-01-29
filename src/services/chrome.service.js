@@ -65,3 +65,52 @@ export const getSaveVideo = function() {
     });
 }
 
+export const pushWhiteUrl = function(urlAdd) {
+    return new Promise(function (resolve, reject) {
+        chrome.storage.local.get(['ts_ext_white_urls'], function (result) {
+            let dataAdd = []
+            if(typeof result['ts_ext_white_urls'] == 'undefined')
+                dataAdd = []
+            else
+                dataAdd = result['ts_ext_white_urls']
+            let isExists = dataAdd.filter(function (url) {
+                                return url == urlAdd
+                            }).length;
+            if(isExists == 0) {
+                dataAdd.unshift(urlAdd)
+                chrome.storage.local.set({ts_ext_white_urls: dataAdd}, function (res) {
+                });
+                resolve(dataAdd)
+            }
+            reject({ error: 'is_exists' })
+        });
+    });
+}
+
+export const deleteWhiteUrl = function(urlDelete) {
+    return new Promise(function (resolve, reject) {
+        chrome.storage.local.get(['ts_ext_white_urls'], function (result) {
+            let dataRemove = []
+            if(typeof result['ts_ext_white_urls'] == 'undefined')
+                dataRemove = []
+            else
+                dataRemove = result['ts_ext_white_urls']
+
+            dataRemove = dataRemove.filter(function (url) {
+                                return url != urlDelete
+                            });
+            chrome.storage.local.set({ts_ext_white_urls: dataRemove}, function (res) {
+            });
+            resolve(dataRemove);
+        });
+    });
+}
+
+export const getWhiteUrl = function() {
+    return new Promise(function (resolve, reject) {
+        chrome.storage.local.get(['ts_ext_white_urls'], function (result) {
+            resolve(result['ts_ext_white_urls']);
+        });
+    });
+}
+
