@@ -1,7 +1,7 @@
 <template>
     <div class="ts-ext-header">
         <div class="ts-ext-title" ref="header_title">
-            <span>{{ $store.state.title }}</span>
+            <span v-html="$store.state.title"></span>
         </div>
        <div class="ts-ext-input" ref="header_input">
             <span class="ts-ext-header-btn ts-ext-header-btn-lang" @click="changeLang" v-text="lang == 'vi' ? 'EN': 'VI'">

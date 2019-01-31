@@ -45,7 +45,7 @@ export default {
             if(keyword == "") {
                 return
             }
-            this.$store.commit('setTitle', { title: 'Search with ' + keyword })
+            this.$store.commit('setTitle', { title: 'Search with <b>' + keyword + '</b>' })
             this.$store.commit('setKeyword', { keyword: keyword })
             this.keywordUse = keyword
             let _this = this
