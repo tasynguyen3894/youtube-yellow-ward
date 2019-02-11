@@ -1,17 +1,24 @@
 import Vue from 'vue'
+import VueI18n from 'vue-i18n'
+import { i18n } from './lang/lang';
 import { pushWhiteUrl, deleteWhiteUrl, getWhiteUrl, editWhiteUrl } from './services/chrome.service'
+
+Vue.use(VueI18n)
 
 window.onload = function() {
     new Vue({
         el: '#ts-ext-page',
+        i18n: i18n,
         data: () => {
             return {
+                lang: 'vi',
                 whiteUrl: [],
                 urlAdd: '',
                 isLoadWhiteUrl: true,
                 oldEditUrl: '',
                 newEditUrl: '',
-                messageAdd: ''
+                messageAdd: '',
+                currentTab: 'support_urls'
             }
         },
         created() {
@@ -24,6 +31,10 @@ window.onload = function() {
             })
         },
         methods: {
+            changeLang(lang) {
+                this.lang = this.lang == 'vi' ? 'en' : 'vi';
+                this.$i18n.locale = this.lang
+            },
             addUrl(url) {
                 let _this = this
                 pushWhiteUrl(url).then(function (result) {
@@ -56,8 +67,10 @@ window.onload = function() {
                     }
                     _this.isLoadWhiteUrl = false
                 })
+            },
+            changeTab(currentTab) {
+                this.currentTab = currentTab
             }
         }
     })
 }
-

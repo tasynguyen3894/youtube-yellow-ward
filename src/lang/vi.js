@@ -28,5 +28,15 @@ export const vi = {
             saved: {
                 saved: "Đã lưu"
             }
+        },
+        page: {
+            support_urls: "Các đường dẫn hỗ trợ",
+            support_url: "Đường dẫn hỗ trợ",
+            add_support_url: "Thêm đường dẫn",
+            add: "Thêm",
+            edit: "Chỉnh sửa",
+            delete: "Xoá",
+            save: "Lưu",
+            cancel: "Huỷ"
         }
     }

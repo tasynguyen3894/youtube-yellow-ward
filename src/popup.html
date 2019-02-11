@@ -24,26 +24,55 @@
             padding: 0px 10px;
         }
 
-        body div {
+        body div.ts-ext-main {
             max-width: 250px;
             width: 250px;
             border: 3px solid #DD5542;
         }
         
         body a {
-            display: block;
+            /* display: block;
             text-align: center;
             background: #DD5542;
             color: #FFF;
             padding: 3px 0px;
             font-size: 15px;
+            text-decoration: none; */
+        }
+
+        body div.ts-ext-btn-group {
+            display: flex;
+            border-top: 3px solid #DD5542;
+        }
+
+        body div.ts-ext-btn-group a {
+            flex: 1;
+            text-align: center;
+            padding: 5px 0px;
             text-decoration: none;
+            cursor: pointer;
+            border-right: 3px solid #DD5542;
+            color: #333;
+        }
+
+        body div.ts-ext-btn-group a:hover {
+            background: #DD5542;
+            color: #FFF;
+        }
+        
+        body div.ts-ext-btn-group a:last-child {
+            border-right: none;
         }
     </style>
-    <div>
+    <div id="ts-ext-popup" class="ts-ext-main">
         <h1>Youtube Yellow Ward</h1>
         <p>Easier than to watch <span>Youtube</span> with extension.</p>
-        <a href="https://tasynguyen3894.github.io/product.html" target="_blank">About us</a>
+        <div class="ts-ext-btn-group">
+            <a @click="addUrl">Eneble</a>
+            <a @click="deleteUrl">Disable</a>
+            <a @click="openSetting">Setting</a>
+        </div>
     </div>
+    <script src="js/popup.js"></script>
 </body>
 </html>
