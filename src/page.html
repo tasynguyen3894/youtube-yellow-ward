@@ -4,11 +4,238 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Youtube Yellow Ward</title>
 </head>
 <body>
-    <div id="ts-ext-page">
+    <style>
+        body {
+            padding: 0px;
+            margin-top: 15px;
+        }
 
+        #ts-ext-page {
+            width: 500px;
+            margin: 0px auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .ts-ext-tab-group {
+            border: 3px solid #DD5542;
+        }
+
+        .ts-ext-tab-group .ts-ext-tab-title ul {
+            padding: 0px;
+            margin: 0px;
+            display: flex;
+            list-style: none;
+            border-bottom: 3px solid #DD5542;
+        }
+
+        .ts-ext-tab-group .ts-ext-tab-title ul li {
+            flex: 1;
+            text-align: center;
+            padding: 10px 0px;
+            border-right: 3px solid #DD5542;
+            cursor: pointer;
+        }
+
+        .ts-ext-tab-group .ts-ext-tab-title ul li:hover, .ts-ext-tab-group .ts-ext-tab-title ul li.active {
+            background: #DD5542;
+            color: #FFF;
+        }
+
+        .ts-ext-tab-group .ts-ext-tab-title ul li:last-child {
+            border-right: none;
+        }
+
+        .ts-ext-tab-group .ts-ext-tab-contents .ts-ext-tab-content {
+            padding: 5px;
+        }
+
+        .ts-ext-tab-group .ts-ext-tab-contents .ts-ext-tab-content .ts-ext-add-url {
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 15px;
+            padding: 10px 5px;
+            overflow: hidden;
+        }
+
+        .ts-ext-tab-group .ts-ext-tab-contents .ts-ext-tab-content .ts-ext-add-url h3 {
+            margin: 5px 0px;
+        }
+
+        .ts-ext-tab-group .ts-ext-tab-contents .ts-ext-tab-content .ts-ext-add-url button {
+            width: 75px;
+            float: left;
+            background: #DD5542;
+            border: 2px solid #DD5542;
+            height: 30px;
+            color: #FFF;
+            border-radius: 0px;
+            font-size: 11px;
+            box-shadow: none;
+            cursor: pointer;
+        }
+
+        .ts-ext-tab-group .ts-ext-tab-contents .ts-ext-tab-content .ts-ext-list-support div.ts-ext-support-url:hover .ts-ext-support-btn button {
+            background: #DD5542;
+            border: 2px solid #DD5542;
+            padding: 4px 7px;
+            color: #FFF;
+            border-radius: 0px;
+            font-size: 11px;
+            box-shadow: none;
+            cursor: pointer;
+        }
+
+        .ts-ext-tab-group .ts-ext-tab-contents .ts-ext-tab-content .ts-ext-list-support div.ts-ext-support-url .ts-ext-support-btn button:hover {
+            background: #DD5542;
+            border: 2px solid #DD5542;
+            padding: 4px 7px;
+            color: #FFF;
+            border-radius: 0px;
+            font-size: 11px;
+            box-shadow: none;
+            background: #FFF;
+            color: #DD5542;
+            cursor: pointer;
+        }
+
+        .ts-ext-tab-group .ts-ext-tab-contents .ts-ext-tab-content .ts-ext-add-url button:focus {
+            outline: none;
+        }
+
+        .ts-ext-tab-group .ts-ext-tab-contents .ts-ext-tab-content .ts-ext-add-url button:hover {
+            background: #FFF;
+            color: #DD5542;
+        }
+
+        .ts-ext-tab-group .ts-ext-tab-contents .ts-ext-tab-content .ts-ext-add-url input {
+            border: 1px solid #ccc;
+            float: left;
+            font-size: 16px;
+            padding: 5px 10px;
+            border-radius: 0px;
+            line-height: initial;
+            margin: 0px;
+        }
+
+        .ts-ext-tab-group .ts-ext-tab-contents .ts-ext-tab-content .ts-ext-add-url input:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        .ts-ext-tab-group .ts-ext-tab-contents .ts-ext-tab-content .ts-ext-list-support {
+            max-height: 500px;
+            padding: 10px;
+            overflow: auto;
+            overflow-y: scroll;
+        }
+
+        .ts-ext-tab-group .ts-ext-tab-contents .ts-ext-tab-content .ts-ext-list-support div.ts-ext-support-url {
+            max-width: 100%;
+            padding: 5px 0px;
+            margin: 5px 0px;
+            position: relative;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .ts-ext-tab-group .ts-ext-tab-contents .ts-ext-tab-content .ts-ext-list-support div.ts-ext-support-url .ts-ext-url-text span {
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: block;
+            padding: 2px;
+            font-style: italic;
+        }
+
+        .ts-ext-tab-group .ts-ext-tab-contents .ts-ext-tab-content .ts-ext-list-support div.ts-ext-support-url:hover .ts-ext-url-text span.en {
+            max-width: calc(100% - 100px);
+        }
+
+        .ts-ext-tab-group .ts-ext-tab-contents .ts-ext-tab-content .ts-ext-list-support div.ts-ext-support-url:hover .ts-ext-url-text span.vi {
+            max-width: calc(100% - 115px);
+        }
+
+        .ts-ext-tab-group .ts-ext-tab-contents .ts-ext-tab-content .ts-ext-list-support div.ts-ext-support-url:hover input.en {
+            width: calc(100% - 170px);
+        }
+
+        .ts-ext-tab-group .ts-ext-tab-contents .ts-ext-tab-content .ts-ext-list-support div.ts-ext-support-url:hover input.vi {
+            width: calc(100% - 130px);
+        }
+
+        .ts-ext-tab-group .ts-ext-tab-contents .ts-ext-tab-content .ts-ext-list-support div.ts-ext-support-url input {
+            width: 100%;
+            padding: 2px;
+            font-style: italic;
+            box-sizing: border-box;
+        }
+
+        .ts-ext-tab-group .ts-ext-tab-contents .ts-ext-tab-content .ts-ext-list-support div.ts-ext-support-url input:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        
+        .ts-ext-tab-group .ts-ext-tab-contents .ts-ext-tab-content .ts-ext-list-support div.ts-ext-support-url .ts-ext-support-btn {
+            position: absolute;
+            right: 0;
+            top: 0;
+            display: none;
+        }
+
+        .ts-ext-tab-group .ts-ext-tab-contents .ts-ext-tab-content .ts-ext-list-support div.ts-ext-support-url .ts-ext-support-btn:focus {
+            outline: none;
+        }
+
+        .ts-ext-tab-group .ts-ext-tab-contents .ts-ext-tab-content .ts-ext-list-support div.ts-ext-support-url:hover .ts-ext-support-btn {
+            display: block;
+        }
+        
+        .ts-ext-add-url {
+            padding: 5px;
+        }
+    </style>
+    <div id="ts-ext-page">
+        <h1>Youtube Yellow Ward</h1>
+        <div>
+            <button @click="changeLang(lang)" v-text="lang == 'vi' ? 'EN': 'VI'"></button>
+        </div>
+        <div class="ts-ext-tab-group">
+            <div class="ts-ext-tab-title">
+                <ul>
+                    <li v-bind:class="{'active': currentTab == 'support_urls'}" @click="changeTab('support_urls')">{{ $t("page.support_urls") }}</li>
+                    <li v-bind:class="{'active': currentTab == 'about_us'}" @click="changeTab('about_us')">About us</li>
+                </ul>
+            </div>
+            <div class="ts-ext-tab-contents">
+                <div class="ts-ext-tab-content" v-show="currentTab == 'support_urls'">
+                    <div class="ts-ext-add-url">
+                        <h3>{{ $t("page.add_support_url") }}</h3>
+                        <input type="text" v-model="urlAdd">
+                        <button @click="addUrl(urlAdd)" v-show="urlAdd != ''">{{ $t("page.add") }}</button>
+                        <span v-text="messageAdd" v-show="messageAdd != ''"></span>
+                    </div>
+                    <div class="ts-ext-list-support">
+                        <div class="ts-ext-support-url" :key="key" v-for="(url, key) in whiteUrl">
+                            <div class="ts-ext-url-text">
+                                <span v-bind:class="{[lang]: true}" v-show="oldEditUrl != url" v-text="url"></span>
+                                <input v-bind:class="{[lang]: true}" v-if="oldEditUrl == url" v-model="newEditUrl" type="text">
+                            </div>
+                            <div class="ts-ext-support-btn">
+                                <button v-if="oldEditUrl != url" @click="editUrl(url)">{{ $t("page.edit") }}</button>
+                                <button v-if="oldEditUrl == url" @click="saveEditUrl(url, newEditUrl)">{{ $t("page.save") }}</button>
+                                <button v-if="oldEditUrl == url" @click="editUrl('')">{{ $t("page.cancel") }}</button>
+                                <button @click="deleteUrl(url)">{{ $t("page.delete") }}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
     </div>
     <script src="js/page.js"></script>
 </body>

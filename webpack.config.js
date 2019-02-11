@@ -5,7 +5,8 @@ const path = require('path')
 module.exports = {
     entry: {
         main: './src/main.js',
-        page: './src/page.js'
+        page: './src/page.js',
+        popup: './src/popup.js'
     },
     output: {
         path: __dirname + '/dist/js',

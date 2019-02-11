@@ -28,5 +28,15 @@ export const en = {
             saved: {
                 saved: "Saved"
             }
+        },
+        page: {
+            support_urls: "Support urls",
+            support_url: "Support url",
+            add_support_url: "Add support url",
+            add: "Add",
+            edit: "Edit",
+            delete: "Delete",
+            save: "Save",
+            cancel: "Cancel"
         }
     }

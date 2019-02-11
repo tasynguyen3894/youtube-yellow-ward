@@ -11,7 +11,7 @@ import { fromEvent } from 'rxjs'
 import { flatMap, takeUntil } from 'rxjs/operators'
 import { store } from './store/store'
 import { i18n } from './lang/lang';
-import { getSetting, setSetting, getSaveVideo } from './services/chrome.service'
+import { getSetting, setSetting, getSaveVideo, getWhiteUrl } from './services/chrome.service'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserSecret, faAngleUp, faAngleDown, faTrashAlt, faLink, faSave } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -24,10 +24,44 @@ Vue.use(VueI18n)
 
 Vue.prototype.$eventBus = new Vue();
 
-window.onload = function() {
+window.tsExtLocation = {
+    top: 5,
+    left: 10
+}
 
-    var elem = document.createElement('div');
+window.onload = function() {
+    getWhiteUrl().then(function (result) {
+        let currentUrl = window.location.origin + window.location.pathname
+        let isMatch = result.filter(function (url) {
+            // return currentUrl.indexOf(url) > -1
+            return url == currentUrl
+        }).length;
+        if(isMatch > 0) {
+            addVue()
+        }
+    })
+}
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    if (request.action == "add_url") {
+        addVue()
+        sendResponse({status: true});
+    }
+    if (request.action == "remove_url") {
+        removeVue()
+        sendResponse({status: true});
+    }
+});
+
+function removeVue() {
+    document.getElementById('ts-ext-main').remove()
+}
+
+function addVue() {
+    let elem = document.createElement('div');
     elem.id = "ts-ext-main";
+    elem.style.top = window.tsExtLocation.top
+    elem.style.left = window.tsExtLocation.left
     elem.innerHTML = `
         <App_header ref='header' v-bind:is_show="isShow" v-on:change_is_show="showOrHide"></App_header>
         <div class="ts-ext-main" v-show="isShow" v-if="!isLoadSetting">
@@ -91,7 +125,7 @@ window.onload = function() {
         },
         components: {list, Search, Sidebar, Videodetail: VideoDetail, App_header: AppHeader, User},
         mounted() {
-            let el =this.$el;
+            let el = this.$el;
             let header = this.$refs.header.$el;
             let mouseDown = fromEvent(header, 'mousedown');
             let mouseMove = fromEvent(document, 'mousemove');
@@ -109,8 +143,9 @@ window.onload = function() {
             mouseDrag.subscribe((mm) => {
                 el.style.left = mm.clientX - startX + 'px';
                 el.style.top = mm.clientY - startY + 'px';
+                window.tsExtLocation.top = el.style.top
+                window.tsExtLocation.left = el.style.left
             });
         }
     })
 }
-
