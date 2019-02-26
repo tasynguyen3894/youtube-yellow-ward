@@ -44,6 +44,10 @@ module.exports = {
         new VueLoaderPlugin(),
         new CopyWebpackPlugin([
             {
+                from: path.resolve(__dirname, 'src/imgs/icon.png'),
+                to: path.resolve(__dirname, 'dist/icons')
+            },
+            {
                 from: path.resolve(__dirname, 'src/manifest.json'),
                 to: path.resolve(__dirname, 'dist/')
             },
