@@ -17,7 +17,7 @@ window.onload = function() {
         i18n: i18n,
         data: () => {
             return {
-                lang: 'vi',
+                lang: 'en',
                 whiteUrl: [],
                 urlAdd: '',
                 isLoadWhiteUrl: true,
@@ -28,6 +28,7 @@ window.onload = function() {
             }
         },
         created() {
+            this.lang = this.$i18n.locale
             let _this = this
             getWhiteUrl().then(function(result) {
                 if(typeof result != "undefined") {
@@ -38,7 +39,7 @@ window.onload = function() {
         },
         methods: {
             changeLang(lang) {
-                this.lang = this.lang == 'vi' ? 'en' : 'vi';
+                this.lang = lang
                 this.$i18n.locale = this.lang
             },
             addUrl(url) {
