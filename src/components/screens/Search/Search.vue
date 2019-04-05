@@ -49,13 +49,24 @@ export default {
             this.$store.commit('setKeyword', { keyword: keyword })
             this.keywordUse = keyword
             let _this = this
-            getVideo(keyword, token, _this.$store.state.setting.maxResult).then((data) => {
-                let { err, results, pageInfo } = data
+            chrome.runtime.sendMessage({action: 'search', payload: {
+                keyword: keyword, 
+                pageToken: token, 
+                maxResults: _this.$store.state.setting.maxResult
+            }}, function(data) {
+                let { err, results, pageInfo } = data.res
                 _this.pageInfo = pageInfo
                 _this.videos = results
                 _this.videoWatch = null
                 _this.$refs.list_content.scrollTop = 0
-            })
+            });
+            // getVideo(keyword, token, _this.$store.state.setting.maxResult).then((data) => {
+            //     let { err, results, pageInfo } = data
+            //     _this.pageInfo = pageInfo
+            //     _this.videos = results
+            //     _this.videoWatch = null
+            //     _this.$refs.list_content.scrollTop = 0
+            // })
         },
         watchVideo(video) {
             this.$emit('watch_video', video)
