@@ -6,7 +6,8 @@ module.exports = {
     entry: {
         main: './src/main.js',
         page: './src/page.js',
-        popup: './src/popup.js'
+        popup: './src/popup.js',
+        background: './src/background.js'
     },
     output: {
         path: __dirname + '/dist/js',
