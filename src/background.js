@@ -2,8 +2,8 @@ import * as youtubeSearch from "youtube-search";
 
 async function getVideo(keyword, pageToken, maxResults) {
     var opts = {
-        maxResults: 10,
-        pageToken: null,
+        maxResults: maxResults,
+        pageToken: pageToken,
         type: "video",
         key: "AIzaSyCRmbQBCQYb5xYJFS-TBD5hY640AD1ij5A"
     };
@@ -13,12 +13,13 @@ async function getVideo(keyword, pageToken, maxResults) {
 
 chrome.runtime.onMessage.addListener(
 function(request, sender, sendResponse) {
-    if (request.action == "seacrh")
-    var { keyword, pageToken, maxResults } = request.payload
-    let _sendResponse = sendResponse
-    getVideo(keyword, pageToken, maxResults).then(res => {
-        sendResponse({res: res})
-    })
-    return true
-    // sendResponse({farewell: "goodbye"});
+    if (request.action == "search") {
+        var { keyword, pageToken, maxResults } = request.payload
+        let _sendResponse = sendResponse
+        getVideo(keyword, pageToken, maxResults).then(res => {
+            _sendResponse({res: res})
+        })
+        return true
+    }
+    
 });

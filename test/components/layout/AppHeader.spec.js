@@ -9,9 +9,9 @@ describe('AppHeader.vue', () => {
         expect(wrapper.emitted('change_is_show')).to.not.be.undefined
     })
 
-    it('change locale when click language button', () => {
-        const wrapper = RenderShallowMount(AppHeader)
-        wrapper.find('.ts-ext-header-btn-lang').trigger('click')
-        expect(wrapper.find('.ts-ext-header-btn-lang').text()).contains('VI')
-    })
+    // it('change locale when click language button', () => {
+    //     const wrapper = RenderShallowMount(AppHeader)
+    //     wrapper.find('.ts-ext-header-btn-lang').trigger('click')
+    //     expect(wrapper.find('.ts-ext-header-btn-lang').text()).contains('VI')
+    // })
 })
