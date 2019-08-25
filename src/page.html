@@ -254,13 +254,17 @@
             border-radius: 15px;
             cursor: pointer;
         }
+
+        [v-cloak] {
+            display: none;
+        }
     </style>
-    <div id="ts-ext-page">
+    <div id="ts-ext-page" v-cloak>
         <div class="ts-ext-lang">
             <span v-text="lang == 'vi' ? 'VI': 'EN'"></span>
             <ul>
-                <li @click="changeLang('vi')">Tiếng Viêt</li>
                 <li @click="changeLang('en')">English</li>
+                <li @click="changeLang('vi')">Tiếng Việt</li>
             </ul>
         </div>
         <!-- <div class="ts-ext-btn-group">
@@ -299,7 +303,8 @@
                     </div>
                 </div>
                 <div class="ts-ext-tab-content" v-show="currentTab == 'about_us'">
-                    zzz
+                    <h4>Member:</h4>
+                    <a href="">Sang Nguyen</a> - frontend, product director
                 </div>
             </div>
         </div>

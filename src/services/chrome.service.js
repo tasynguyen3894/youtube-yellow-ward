@@ -13,9 +13,9 @@ export const setSetting = function(setting) {
     });
 }
 
-export const pushSaveVideo = function(videoAdd) {
+export const pushSaveVideo = function(serviceChrome, videoAdd) {
     return new Promise(function (resolve, reject) {
-        chrome.storage.local.get(['ts_ext_save_list'], function (result) {
+        serviceChrome.storage.local.get(['ts_ext_save_list'], function (result) {
             let dataAdd = []
             if(typeof result['ts_ext_save_list'] == 'undefined')
                 dataAdd = []
@@ -29,7 +29,7 @@ export const pushSaveVideo = function(videoAdd) {
                     dataAdd.pop()
                 }
                 dataAdd.unshift(videoAdd)
-                chrome.storage.local.set({ts_ext_save_list: dataAdd}, function (res) {
+                serviceChrome.storage.local.set({ts_ext_save_list: dataAdd}, function (res) {
                 });
                 resolve(dataAdd)
             }
@@ -38,22 +38,27 @@ export const pushSaveVideo = function(videoAdd) {
     });
 }
 
-export const deleteSaveVideo = function(id) {
+export const deleteSaveVideo = function(serviceChrome, id) {
+    
     return new Promise(function (resolve, reject) {
-        chrome.storage.local.get(['ts_ext_save_list'], function (result) {
-            let dataRemove = []
-            if(typeof result['ts_ext_save_list'] == 'undefined')
-                dataRemove = []
-            else
-                dataRemove = result['ts_ext_save_list']
-
-            dataRemove = dataRemove.filter(function (item) {
-                                return item.id != id
-                            });
-            chrome.storage.local.set({ts_ext_save_list: dataRemove}, function (res) {
+        // try {
+            serviceChrome.storage.local.get(['ts_ext_save_list'], function (result) {
+                let dataRemove = []
+                if(typeof result['ts_ext_save_list'] == 'undefined')
+                    dataRemove = []
+                else
+                    dataRemove = result['ts_ext_save_list']
+    
+                dataRemove = dataRemove.filter(function (item) {
+                                    return item.id != id
+                                });
+                serviceChrome.storage.local.set({ts_ext_save_list: dataRemove}, function (res) {
+                });
+                resolve(dataRemove);
             });
-            resolve(dataRemove);
-        });
+        // } catch(err) {
+        //     reject(err)
+        // }
     });
 }
 

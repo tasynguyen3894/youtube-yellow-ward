@@ -13,20 +13,37 @@
 </template>
 <script>
 import { deleteSaveVideo } from '../../../services/chrome.service'
+import axios from 'axios'
 
 export default {
     name: 'SaveList',
     data: () => {
         return {
-
         }
     },
     methods: {
         deleteSave(id) {
             let _this = this
-            deleteSaveVideo(id).then(function (result) {
-                _this.$store.commit('setSaveVideo', { saveVideo: result })
-            })
+            // deleteSaveVideo(this.$chrome, id).then(function (result) {
+            //     _this.$store.commit('setSaveVideo', { saveVideo: result })
+            // }).catch(function(err) {
+            // })
+
+            this.$chrome.storage.local.get(['ts_ext_save_list'], function (result) {
+                let dataRemove = []
+                if(typeof result['ts_ext_save_list'] == 'undefined')
+                    dataRemove = []
+                else
+                    dataRemove = result['ts_ext_save_list']
+    
+                dataRemove = dataRemove.filter(function (item) {
+                                    return item.id != id
+                                });
+                _this.$chrome.storage.local.set({ts_ext_save_list: dataRemove}, function (res) {
+                });
+                // resolve();
+                _this.$store.commit('setSaveVideo', { saveVideo: dataRemove })
+            });
         },
         watchVideo(video) {
             this.$store.commit('setTab', { tab: 'watch' })

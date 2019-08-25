@@ -19,10 +19,19 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 library.add(faUserSecret, faAngleUp, faAngleDown, faTrashAlt, faLink, faSave)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
+
+
+const chromePlugin = {
+    install(Vue, options) {
+        Vue.prototype.$chrome = chrome
+    }
+}
 Vue.use(Vuex)
 Vue.use(VueI18n)
-
+Vue.use(chromePlugin)
 Vue.prototype.$eventBus = new Vue();
+// Vue.prototype.$chrome = chrome;
+
 
 window.tsExtLocation = {
     top: 5,

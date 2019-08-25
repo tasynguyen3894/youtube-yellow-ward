@@ -59,7 +59,7 @@ export default {
         },
         save() {
             let _this = this
-            pushSaveVideo(this.video).then(function (result) {
+            pushSaveVideo(this.$chrome, this.video).then(function (result) {
                 _this.$store.commit('setSaveVideo', { saveVideo: result })
                 _this.message = 'saved'
             }).catch(function (error) {
