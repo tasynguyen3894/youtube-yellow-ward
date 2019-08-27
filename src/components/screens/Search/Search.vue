@@ -87,6 +87,7 @@ export default {
         border-radius: 0px;
         line-height: initial;
         margin: 0px;
+        height: 30px;
     }
 
     .ts-ext-search .ts-ext-form input:focus {
@@ -104,7 +105,7 @@ export default {
         border-radius: 0px;
         font-size: 11px;
         box-shadow: none;
-
+        box-sizing: border-box;
     }
 
     .ts-ext-search .ts-ext-form button:focus {

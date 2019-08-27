@@ -23,7 +23,8 @@ export const en = {
                 pause_when_hide_app: "Pause when hide app",
                 max_result: "Max result",
                 save: "Save",
-                synchronous_setting: "Synchronous setting"
+                synchronous_setting: "Synchronous setting",
+                saved: "Saved"
             },
             saved: {
                 saved: "Saved"
@@ -37,6 +38,8 @@ export const en = {
             edit: "Edit",
             delete: "Delete",
             save: "Save",
-            cancel: "Cancel"
+            cancel: "Cancel",
+            setting: "Setting",
+            about: "About us"
         }
     }

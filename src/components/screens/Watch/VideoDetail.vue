@@ -89,8 +89,9 @@ export default {
 
 <style scoped>
     .ext-detail {
+        box-sizing: content-box;
         padding: 15px;
-        height: 320px;
+        height: 330px;
     }
 
     .ext-detail .ext-video {
@@ -141,6 +142,7 @@ export default {
         min-width: 35px;
         text-align: center;
         cursor: pointer;
+        box-sizing: content-box;
     }
 
     .ext-detail .ts-ext-detail-btn span.ts-ext-notice {

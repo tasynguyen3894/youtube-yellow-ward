@@ -63,6 +63,10 @@ module.exports = {
             {
                 from: path.resolve(__dirname, 'src/css/app.css'),
                 to: path.resolve(__dirname, 'dist/css/')
+            },
+            {
+                from: path.resolve(__dirname, 'src/css/page.css'),
+                to: path.resolve(__dirname, 'dist/css/')
             }
         ])
     ]

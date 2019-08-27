@@ -23,7 +23,8 @@ export const vi = {
                 pause_when_hide_app: "Dừng video khi ẩn ứng dụng",
                 max_result: "Kết quả tối đa",
                 save: "Lưu",
-                synchronous_setting: "Đồng bộ cài đặt"
+                synchronous_setting: "Đồng bộ cài đặt",
+                saved: "Đã lưu"
             },
             saved: {
                 saved: "Đã lưu"
@@ -37,6 +38,8 @@ export const vi = {
             edit: "Chỉnh sửa",
             delete: "Xoá",
             save: "Lưu",
-            cancel: "Huỷ"
+            cancel: "Huỷ",
+            setting: "Cài đặt",
+            about: "Về chúng tôi"
         }
     }

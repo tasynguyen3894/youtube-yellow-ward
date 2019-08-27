@@ -17,6 +17,9 @@
                 <button @click="save">{{ this.$t("user.setting.save") }}</button>
                 <button @click="synchronous">{{ this.$t("user.setting.synchronous_setting") }}</button>
             </div>
+            <div v-if="saveDone" class="ts-ext-message">
+                {{ this.$t("user.setting.saved") }}
+            </div>
         </div>
         <div v-show="isLoading">Loading setting</div>
     </div>
@@ -33,7 +36,8 @@ export default {
                 pasueWhenHide: false,
                 pauseWhenChangeTab: false
             },
-            isLoading: true
+            isLoading: true,
+            saveDone: false
         }
     },
     created: function() {
@@ -48,6 +52,7 @@ export default {
             if(isNaN(this.setting.maxResult) || this.setting.maxResult == "" || this.setting.maxResult > 20) {
                 this.setting.maxResult = 10
             }
+            this.saveDone = true
             this.isLoading = true
             this.$store.commit('setSetting', this.setting)
             setSetting(this.setting)
@@ -59,7 +64,7 @@ export default {
             getSetting().then(function(result) {
                 _this.$store.commit('setSetting', result)
                 _this.isLoadSetting = false
-                
+                _this.saveDone = true
                 let {maxResult, pasueWhenHide, pauseWhenChangeTab} = _this.$store.state.setting;
                 _this.setting.maxResult = maxResult ? maxResult : _this.setting.maxResult
                 _this.setting.pasueWhenHide = pasueWhenHide ? pasueWhenHide : _this.setting.pasueWhenHide
@@ -84,30 +89,36 @@ export default {
 
     .ts-ext-setting-detail > div div input {
         float: right;
+        outline: none;
+        border-radius: 0px;
     }
 
     .ts-ext-setting-detail > div div.ts-ext-btn-group {
         border-bottom: none;
-        display: flex;
+        display: block;
     }
 
     .ts-ext-setting-detail > div div.ts-ext-btn-group button {
-        flex: 1;
+        /* flex: 1; */
+        width: calc(50% - 3px);
         background: #0271BC;
         border: 2px solid #0271BC;
+        box-sizing: border-box;
         color: #FFF;
         padding: 10px;
         cursor: pointer;
         box-shadow: none;
+        outline: none;
+        font-size: 12px;
     }
 
-    .ts-ext-setting-detail > div div.ts-ext-btn-group button:first-child {
-        border-radius: 3px 0px 0px 3px;
-        border-right-color: #FFF; 
+    .ts-ext-setting-detail > div div.ts-ext-btn-group button:hover {
+        background: #FFF;
+        color: #0271BC;
     }
 
-    .ts-ext-setting-detail > div div.ts-ext-btn-group button:last-child {
-        border-radius: 0px 3px 3px 0px;
+    .ts-ext-setting-detail .ts-ext-message {
+        color: #DD5542;
     }
 
     .ts-ext-setting-detail > div div input[type=number] {

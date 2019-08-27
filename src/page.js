@@ -24,10 +24,15 @@ window.onload = function() {
                 oldEditUrl: '',
                 newEditUrl: '',
                 messageAdd: '',
-                currentTab: 'support_urls'
+                currentTab: 'support_urls',
+                page: 'setting',
+                age: 25
             }
         },
         created() {
+            var d = new Date();
+            var n = d.getFullYear();
+            this.age = n - 1994
             this.lang = this.$i18n.locale
             let _this = this
             getWhiteUrl().then(function(result) {
@@ -77,6 +82,9 @@ window.onload = function() {
             },
             changeTab(currentTab) {
                 this.currentTab = currentTab
+            },
+            changePage(page) {
+                this.page = page
             }
         }
     })

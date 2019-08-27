@@ -45,7 +45,7 @@ export default {
         margin: 5px;
         cursor: pointer;
         font-weight: 700;
-        font-size: 15px;
+        font-size: 15px !important;
         box-sizing: content-box;
         line-height: normal;
     }
@@ -53,5 +53,6 @@ export default {
     li.ts-ext-video-item div h5 {
         margin: 3px;
         color: #999;
+        font-size: 12.45px  !important;
     }
 </style>

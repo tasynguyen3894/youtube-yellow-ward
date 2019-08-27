@@ -59,6 +59,7 @@ export default {
         width: calc(100% - 85px);
         float: left;
         cursor: all-scroll;
+        -webkit-font-smoothing: auto;
     }
 
     .ts-ext-header .ts-ext-input {
