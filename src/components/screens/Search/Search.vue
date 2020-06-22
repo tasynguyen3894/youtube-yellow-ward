@@ -88,6 +88,7 @@ export default {
         line-height: initial;
         margin: 0px;
         height: 30px;
+        box-sizing: border-box;
     }
 
     .ts-ext-search .ts-ext-form input:focus {

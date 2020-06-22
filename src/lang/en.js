@@ -33,7 +33,7 @@ export const en = {
         page: {
             support_urls: "Support urls",
             support_url: "Support url",
-            add_support_url: "Add support url",
+            add_support_url: "Add url",
             add: "Add",
             edit: "Edit",
             delete: "Delete",

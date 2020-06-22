@@ -6,6 +6,7 @@ import Search from './components/screens/Search/Search.vue'
 import Sidebar from './components/layout/SideBar.vue'
 import VideoDetail from './components/screens/Watch/VideoDetail.vue';
 import AppHeader from './components/layout/AppHeader.vue';
+import QuickSetting from './components/layout/QuickSetting.vue'
 import User from './components/screens/User/User.vue';
 import { fromEvent } from 'rxjs'
 import { flatMap, takeUntil } from 'rxjs/operators'
@@ -13,10 +14,10 @@ import { store } from './store/store'
 import { i18n } from './lang/lang';
 import { getSetting, setSetting, getSaveVideo, getWhiteUrl } from './services/chrome.service'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUserSecret, faAngleUp, faAngleDown, faTrashAlt, faLink, faSave } from '@fortawesome/free-solid-svg-icons'
+import { faUserSecret, faAngleUp, faAngleDown, faTrashAlt, faLink, faSave, faPauseCircle, faPlayCircle, faStopCircle, faCog } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faUserSecret, faAngleUp, faAngleDown, faTrashAlt, faLink, faSave)
+library.add(faUserSecret, faAngleUp, faAngleDown, faTrashAlt, faLink, faSave, faPauseCircle, faPlayCircle, faStopCircle, faCog)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
@@ -81,6 +82,7 @@ function addVue() {
             <User v-show="$store.state.tab == 'user'"></User>
             <Sidebar></Sidebar>
         </div>
+        <Quicksetting v-show="!isShow && $store.state.currentVideo"></Quicksetting>
         <div class="ts-ext-main" v-show="isShow && isLoadSetting">
             Loading setting
         </div>
@@ -132,7 +134,7 @@ function addVue() {
                 this.$store.commit('decrement')
             }
         },
-        components: {list, Search, Sidebar, Videodetail: VideoDetail, App_header: AppHeader, User},
+        components: {list, Search, Sidebar, Videodetail: VideoDetail, App_header: AppHeader, User, Quicksetting: QuickSetting},
         mounted() {
             let el = this.$el;
             let header = this.$refs.header.$el;

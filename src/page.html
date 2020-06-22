@@ -63,7 +63,7 @@
                         <div class="ts-ext-list-support">
                             <div class="ts-ext-support-url" :key="key" v-for="(url, key) in whiteUrl">
                                 <div class="ts-ext-url-text">
-                                    <span v-bind:class="{[lang]: true}" v-show="oldEditUrl != url" v-text="url"></span>
+                                    <span v-bind:class="{[lang]: true}" v-show="oldEditUrl != url"><a v-bind:href="url"  v-text="url"></a></span>
                                     <input v-bind:class="{[lang]: true}" v-if="oldEditUrl == url" v-model="newEditUrl" type="text">
                                 </div>
                                 <div class="ts-ext-support-btn">
@@ -81,10 +81,11 @@
                     </div>
                 </div>
             </div>
+            <div class="footer">
+                Make by <a href="https://tasynguyen3894.github.io">Tasy Nguyen</a>
+            </div>
         </div>
-        <div class="footer">
-            Make by <a href="https://tasynguyen3894.github.io">Tasy Nguyen</a>
-        </div>
+        
     </div>
     <script src="js/page.js"></script>
 </body>

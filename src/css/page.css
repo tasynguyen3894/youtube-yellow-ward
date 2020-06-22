@@ -234,6 +234,10 @@ body {
     max-width: calc(100% - 115px);
 }
 
+.ts-ext-tab-group .ts-ext-tab-contents .ts-ext-tab-content .ts-ext-list-support div.ts-ext-support-url .ts-ext-url-text span a {
+    color: #FFF;
+}
+
 .ts-ext-tab-group .ts-ext-tab-contents .ts-ext-tab-content .ts-ext-list-support div.ts-ext-support-url:hover input.en {
     width: calc(100% - 170px);
 }
@@ -290,7 +294,7 @@ body {
     padding: 10px 20px;
     cursor: pointer;
     color: #FFF;
-    margin-left: 10px;
+    margin-left: 5px;
 }
 
 .ts-ext-menu ul li.active {

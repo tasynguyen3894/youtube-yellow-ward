@@ -3,10 +3,14 @@
         <div class="ts-ext-title" ref="header_title">
             <span>{{ $store.state.title }}</span>
         </div>
+        <!-- <span class="ts-ext-header-btn ts-ext-header-btn-cog" @click="showOrHide" >
+            <font-awesome-icon v-bind:icon="'cog'" />
+        </span> -->
        <div class="ts-ext-input" ref="header_input">
             <span class="ts-ext-header-btn ts-ext-header-btn-lang" @click="changeLang" v-text="lang == 'vi' ? 'EN': 'VI'">
                 
             </span>
+            
             <span class="ts-ext-header-btn ts-ext-header-btn-show" @click="showOrHide" >
                 <font-awesome-icon v-bind:icon="is_show ? 'angle-up' : 'angle-down'" />
             </span>
@@ -56,9 +60,10 @@ export default {
     }
 
     .ts-ext-header .ts-ext-title {
-        width: calc(100% - 85px);
+        width: calc(100% - 105px);
         float: left;
         cursor: all-scroll;
+        margin-left: 20px;
         -webkit-font-smoothing: auto;
     }
 
@@ -99,6 +104,11 @@ export default {
     .ts-ext-header .ts-ext-header-btn-show {
         width: 12px;
         right: 0px;
+    }
+
+    .ts-ext-header .ts-ext-header-btn-cog {
+        width: 12px;
+        left: 0px;
     }
 
 </style>
