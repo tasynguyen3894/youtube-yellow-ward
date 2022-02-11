@@ -18,7 +18,7 @@
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.1",
     "flush-promises": "^1.0.2",
-    "karma": "^3.1.1",
+    "karma": "^6.3.14",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage": "^1.1.2",
